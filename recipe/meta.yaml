@@ -1,17 +1,17 @@
 {% set name = "sigtools" %}
-{% set version = "2.0.2" %}
+{% set version = "2.0.3" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: 1b890f22ece64bc47d3d4e84c950581e83917794a6cf1548698145590e221aff
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: e7789628ec0d02e421bca76532b0d5da149f96f09e7ed4a5cbf318624b75e949
 
 build:
-  number: 3
-  script: "{{ PYTHON }} -m pip install . -vv"
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
@@ -29,11 +29,11 @@ test:
     - sigtools.tests
 
 about:
-  home: "http://sigtools.readthedocs.io/"
+  home: http://sigtools.readthedocs.io/
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: "Utilities for working with inspect.Signature objects."
+  summary: Utilities for working with inspect.Signature objects.
   dev_url: https://github.com/epsy/sigtools
 
 extra:
