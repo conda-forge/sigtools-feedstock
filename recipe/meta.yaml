@@ -11,13 +11,17 @@ source:
   sha256: 4b8e135a9cd4d2ea00da670c093372d74e672ba3abb87f4c98d8e73dea54445c
 
 build:
-  number: 0
+  number: 1
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script:
+    - set "SETUPTOOLS_SCM_PRETEND_VERSION=%PKG_VERSION%"  # [win]
+    - export SETUPTOOLS_SCM_PRETEND_VERSION=$PKG_VERSION  # [unix]
+    - {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - python >=3.6
+    - setuptools_scm
     - pip
   run:
     - python >=3.6
