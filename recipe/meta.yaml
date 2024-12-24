@@ -7,11 +7,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/sigtools-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/sigtools-{{ version }}.tar.gz
   sha256: 4b8e135a9cd4d2ea00da670c093372d74e672ba3abb87f4c98d8e73dea54445c
 
 build:
-  number: 1
+  number: 2
   noarch: python
   script:
     - set "SETUPTOOLS_SCM_PRETEND_VERSION=%PKG_VERSION%"  # [win]
@@ -20,11 +20,11 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - setuptools_scm
     - pip
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - attrs
 
 test:
@@ -35,6 +35,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: http://sigtools.readthedocs.io/
